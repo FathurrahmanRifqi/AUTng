@@ -57,6 +57,14 @@ jobs:
         path: ./SeleniumTryNg/testcase1.png
         uploadMethod: imgbb
         apiKey: b44c41f64dbc331e93c076cc8c9670a6
+      with:
+        path: ./SeleniumTryNg/testcase2.png
+        uploadMethod: imgbb
+        apiKey: b44c41f64dbc331e93c076cc8c9670a6
+      with:
+        path: ./SeleniumTryNg/testcase3.png
+        uploadMethod: imgbb
+        apiKey: b44c41f64dbc331e93c076cc8c9670a6
     - name: Stop Docker
       run: docker stop docker-apache
 
