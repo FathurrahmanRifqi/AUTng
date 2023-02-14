@@ -26,7 +26,7 @@ jobs:
     - name: run Docker
       run: docker run -d -p 80:80 --name docker-apache -d my-apache2
     - name: check server
-      run:  curl http://localhost:80
+      run:  curl http://localhost:80/index.php
     - name: Stop Docker
       run:  docker stop docker-apache 
     - name: Install Google Chrome
