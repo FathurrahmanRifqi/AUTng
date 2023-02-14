@@ -60,7 +60,7 @@ jobs:
     - name: Upload Image 2
       id: upload-image-1
       uses: McCzarny/upload-image@v1.2.5
-        with:
+      with:
         path: ./SeleniumTryNg/testcase2.png
         uploadMethod: imgbb
         apiKey: b44c41f64dbc331e93c076cc8c9670a6
