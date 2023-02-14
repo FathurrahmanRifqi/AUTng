@@ -1,0 +1,62 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: First Step to CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v3
+    - name: Building container
+      run: docker build -t my-apache2 .
+    - name: run Docker
+      run: docker run -d -p 80:80 --name docker-apache -d my-apache2
+    - name: check server
+      run:  curl http://localhost:80
+    - name: Stop Docker
+      run:  docker stop docker-apache 
+    - name: Install Google Chrome
+      run:  |
+              chmod +x ./scripts/InstallChrome.sh
+              ./scripts/InstallChrome.sh
+    - name: Check out Selenium Script
+      uses: actions/checkout@main
+      with:
+        repository: FathurrahmanRifqi/SeleniumTry
+        path: './SeleniumTry'
+    - name: Show Working Directory
+      run: ls
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Run Selenium Script
+      run:  |
+              cd ./SeleniumTryNg
+              mvn test
+    - name: Upload Image
+      id: upload-image-0
+      uses: McCzarny/upload-image@v1.2.5
+      with:
+        path: ./SeleniumTryNg/test.png
+        uploadMethod: imgbb
+        apiKey: b44c41f64dbc331e93c076cc8c9670a6
+    - name: Stop Docker
+      run: docker stop docker-apache
+
