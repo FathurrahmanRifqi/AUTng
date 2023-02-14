@@ -36,8 +36,8 @@ jobs:
     - name: Check out Selenium Script
       uses: actions/checkout@main
       with:
-        repository: FathurrahmanRifqi/SeleniumTry
-        path: './SeleniumTry'
+        repository: FathurrahmanRifqi/SeleniumTryNg
+        path: './SeleniumTryNg'
     - name: Show Working Directory
       run: ls
     - name: Set up JDK 11
