@@ -57,10 +57,16 @@ jobs:
         path: ./SeleniumTryNg/testcase1.png
         uploadMethod: imgbb
         apiKey: b44c41f64dbc331e93c076cc8c9670a6
-      with:
+    - name: Upload Image 2
+      id: upload-image-1
+      uses: McCzarny/upload-image@v1.2.5
+        with:
         path: ./SeleniumTryNg/testcase2.png
         uploadMethod: imgbb
         apiKey: b44c41f64dbc331e93c076cc8c9670a6
+    - name: Upload Image 3
+      id: upload-image-2
+      uses: McCzarny/upload-image@v1.2.5
       with:
         path: ./SeleniumTryNg/testcase3.png
         uploadMethod: imgbb
